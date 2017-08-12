@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<h:form onsubmit="">
+		<h3>Cardápio</h3>
+		<h:panelGrid>
+			<h:panelGroup >
+				<h:outputLabel value="Nome:" for="nome"/> 
+				<h:inputText id="nome" value="#{cardapioMBean.nome}" rendered="true" required="true" requiredMessage="Nome Obrigatório"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Valor:" for="valor"/> 
+				<h:inputText id="valor" value="#{cardapioMBean.valor}" rendered="true" required="true" requiredMessage="Valor Obrigatório"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Tipo:" for="tipo"/> 
+				<h:selectOneMenu id="tipo" value="#{cardapioMBean.tipo}" required="true" requiredMessage="Tipo Obrigatório">
+					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem itemValue="S" itemLabel="Sobremesa"/>
+					<f:selectItem itemValue="PP" itemLabel="Prato principal"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#{cardapioMBean.salvar}" value="Salvar" />
+			</h:panelGroup>
+			<h:messages errorStyle="color:red" />
+		</h:panelGrid>
+	
+	</h:form>
+	
+</h:body>
+
+</html>
