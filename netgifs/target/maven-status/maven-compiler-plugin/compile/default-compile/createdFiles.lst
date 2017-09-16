@@ -1,0 +1,4 @@
+br\com\fiap\dao\UsuarioDAO.class
+br\com\fiap\model\Usuario.class
+br\com\fiap\managedbeans\LoginManagedBean.class
+br\com\fiap\model\Usuario_.class
