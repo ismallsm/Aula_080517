@@ -31,16 +31,18 @@ CREATE TABLE db_netgifs.tb_pessoa(
     nm_categoria   VARCHAR(70)  NOT NULL
 );
 
- CREATE TABLE db_neaatgifs.tb_gif(
+ CREATE TABLE db_netgifs.tb_gif(
 	id_gif INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nm_gif           VARCHAR(70)  NOT NULL,
 	ds_gif   VARCHAR(1000) NOT NULL,
+    ds_genero   VARCHAR(100) NOT NULL,
+    ds_classificacao_etaria   VARCHAR(15) NOT NULL,
+    ds_idioma   VARCHAR(20) NOT NULL,
 	link_gif varchar(500) NOT NULL,
   	id_categoria int NOT NULL
 );
 
 ALTER TABLE db_netgifs.tb_gif ADD FOREIGN KEY (id_categoria) REFERENCES db_netgifs.tb_categoria(id_categoria);
-
 
  CREATE TABLE db_netgifs.tb_usuario_favorito(
 	id_usuario  int  NOT NULL,
