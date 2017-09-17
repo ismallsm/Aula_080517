@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/layoutBase.xhtml">
  
@@ -13,8 +14,51 @@
 	   <h:panelGroup>
 			<img src="https://media.giphy.com/media/xT9IgLnFupIc6joWuA/giphy.gif" />
 		</h:panelGroup> 
+		
+		
  
 	</ui:define>
  
+ 	<h:form id="form">
+    <p:repeat value="#{dataListView.gifs}" var="gif">
+        <h:panelGrid columns="2" style="width:100%">
+            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
+                <f:setPropertyActionListener value="#{gif}" target="#{dataListView.gifSelecionado}" />
+                <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
+            </p:commandLink>
+ 
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="GIF:" />
+                    <h:outputText value="#{gif.nome}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Descricao" />
+                    <h:outputText value="#{gif.descricao}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Genero" />
+                    <h:outputText value="#{gif.genero}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="Classificacao" />
+                    <h:outputText value="#{gif.classificacao}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="Idioma" />
+                    <h:outputText value="#{gif.idioma}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+        <hr />
+    </p:repeat>
+ 
+    <p:dialog header="Gif Info" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:outputPanel id="gifDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dataListView.gifSelecionado}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dataListView.gifSelecionado.brand}-big.gif"/> 
+                </f:facet>
+ 
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
 </ui:composition>
 </html>

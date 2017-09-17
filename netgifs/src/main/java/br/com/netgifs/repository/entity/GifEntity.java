@@ -31,6 +31,15 @@ public class GifEntity implements Serializable {
 	
 	@Column(name="link_gif")
 	private String link;
+	
+	@Column(name="ds_genero")
+	private String genero;
+	
+	@Column(name="ds_classificacao_etaria")
+	private String classificacao;
+	
+	@Column(name="ds_idioma")
+	private String idioma;
  
 	@OneToOne
 	private CategoriaEntity categoria;
@@ -73,6 +82,30 @@ public class GifEntity implements Serializable {
 
 	public void setCategoria(CategoriaEntity categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getClassificacao() {
+		return classificacao;
+	}
+
+	public void setClassificacao(String classificacao) {
+		this.classificacao = classificacao;
+	}
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 	
 }
