@@ -1,3 +1,7 @@
-C:\Desenvolvimento\workspace_java_web\netgifs\src\main\java\br\com\fiap\dao\UsuarioDAO.java
-C:\Desenvolvimento\workspace_java_web\netgifs\src\main\java\br\com\fiap\model\Usuario.java
-C:\Desenvolvimento\workspace_java_web\netgifs\src\main\java\br\com\fiap\managedbeans\LoginManagedBean.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\utils\Util.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\filters\JPAFilter.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\repository\UsuarioRepository.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\filters\AutenticacaoFilter.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\model\UsuarioModel.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\repository\entity\UsuarioEntity.java
+C:\Desenvolvimento\workspace_netgifs\netgifs\src\main\java\br\com\netgifs\usuario\controller\UsuarioController.java
