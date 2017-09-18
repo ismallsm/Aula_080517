@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name="tb_catergoria")
-@Entity	
+@Table(name="tb_categoria")
+@Entity
+@NamedQuery(name = "CategoriaEntity.findCategoria", 
+query= "SELECT c FROM CategoriaEntity c")
 public class CategoriaEntity implements Serializable {
  
 	private static final long serialVersionUID = 1L;

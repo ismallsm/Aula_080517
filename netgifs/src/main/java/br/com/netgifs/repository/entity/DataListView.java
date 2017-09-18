@@ -15,8 +15,12 @@ import br.com.netgifs.usuario.controller.GifController;
 public class DataListView implements Serializable {
      
     private List<GifEntity> gifs;
+    
+    private List<CategoriaEntity> categorias;
          
     private GifEntity gifSelecionado;
+    
+    private CategoriaEntity categoriaSelecionada;
      
     @ManagedProperty("#{gifController}")
     private GifController service;
@@ -24,6 +28,7 @@ public class DataListView implements Serializable {
     @PostConstruct
     public void init() {
     	gifs = service.getGifs();
+    	categorias = service.getCategorias();
     }
 
 	public List<GifEntity> getGifs() {
@@ -48,5 +53,21 @@ public class DataListView implements Serializable {
 
 	public void setService(GifController service) {
 		this.service = service;
+	}
+
+	public List<CategoriaEntity> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<CategoriaEntity> categorias) {
+		this.categorias = categorias;
+	}
+
+	public CategoriaEntity getCategoriaSelecionada() {
+		return categoriaSelecionada;
+	}
+
+	public void setCategoriaSelecionada(CategoriaEntity categoriaSelecionada) {
+		this.categoriaSelecionada = categoriaSelecionada;
 	}
 }

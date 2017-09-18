@@ -31,5 +31,24 @@ public class GifRepository implements Serializable {
  
  
 	}
+	
+	public List<GifEntity> buscarGifsByCategoria(int categoria){
+		 
+		try {
+ 
+			//QUERY QUE VAI SER EXECUTADA (GifEntity.findGif) 	
+			Query query = Util.JpaEntityManager().createQuery("SELECT g FROM GifEntity g where g.categoria = :idCategoria");
+			return query.setParameter("idCategoria", categoria).getResultList();
+
+ 
+		} catch (Exception e) {
+ 
+			return null;
+		}
+ 
+ 
+ 
+	}
+	
 
 }

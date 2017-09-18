@@ -9,8 +9,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.netgifs.model.UsuarioModel;
+import br.com.netgifs.repository.CategoriaRepository;
 import br.com.netgifs.repository.GifRepository;
 import br.com.netgifs.repository.UsuarioRepository;
+import br.com.netgifs.repository.entity.CategoriaEntity;
 import br.com.netgifs.repository.entity.GifEntity;
 import br.com.netgifs.repository.entity.UsuarioEntity;
 
@@ -43,4 +45,19 @@ public class GifController implements Serializable {
         return gifRepository.buscarGifs();
 
     }
+	
+	public List<CategoriaEntity> getCategorias() {
+        List<CategoriaEntity> list = new ArrayList<CategoriaEntity>();
+        
+        CategoriaRepository categoriaRepository = new CategoriaRepository();
+        return categoriaRepository.buscarCategorias();
+
+    }
+	
+	public List<GifEntity> getGifsByCategoria(){
+		List<GifEntity> list = new ArrayList<GifEntity>();
+        
+        GifRepository gifRepository = new GifRepository();
+        return  gifRepository.buscarGifsByCategoria(1);
+	}
 }

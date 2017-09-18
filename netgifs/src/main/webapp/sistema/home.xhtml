@@ -10,31 +10,42 @@
 <ui:composition template="/template/layoutBase.xhtml">
  
 	<ui:define name="content">
- 
+   
 		<h:form id="form">
+		
+		 <h:panelGrid columns="1" style="margin-bottom:2px;margin: auto;width: 50%; padding: 5px;" cellpadding="4" >
+        <p:selectOneMenu id="console" value="#{dataListView.categoriaSelecionada}" style="width:400px" >
+            <f:selectItem itemLabel="Escolha Uma categoria" itemValue="" />
+             <f:selectItems value="#{dataListView.categorias}" var="categoria" itemLabel="#{categoria.nome}" itemValue="#{categoria.id}"/>
+             <p:ajax event="change" listener="#{gifController.getGifsByCategoria}" update="form"/>
+             
+        </p:selectOneMenu>
+    </h:panelGrid>
     <p:repeat value="#{dataListView.gifs}" var="gif">
-        <h:panelGrid columns="2" style="width:35%">
+        <h:panelGrid columns="2" columnClasses="logo,detail">
             <p:commandLink update=":form:gifDetail" oncomplete="PF('carDialog').show()">
                 <f:setPropertyActionListener value="#{gif}" target="#{dataListView.gifSelecionado}" />
 					<img width="200" height="200" src="#{gif.link}" />
             </p:commandLink>
  
             <p:outputPanel>
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="2">
                     <h:outputText value="GIF:" />
                     <h:outputText value="#{gif.nome}" style="font-weight: bold"/>
  
-                    <h:outputText value="Descricao" />
+                    <h:outputText value="Descrição:" />
                     <h:outputText value="#{gif.descricao}" style="font-weight: bold"/>
  
-                    <h:outputText value="Genero" />
+                    <h:outputText value="Gênero:" />
                     <h:outputText value="#{gif.genero}" style="font-weight: bold"/>
                     
-                    <h:outputText value="Classificacao" />
+                    <h:outputText value="Classificação:" />
                     <h:outputText value="#{gif.classificacao}" style="font-weight: bold"/>
                     
-                    <h:outputText value="Idioma" />
+                    <h:outputText value="Idioma:" />
                     <h:outputText value="#{gif.idioma}" style="font-weight: bold"/>
+                    
+                    <h:button value="Favoritar"/>
                 </h:panelGrid>
             </p:outputPanel>
         </h:panelGrid>
@@ -47,7 +58,6 @@
                 <f:facet name="header">
                    <img width="1000" height="1000" src="#{gif.link}" />
                 </f:facet>
- 
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>
