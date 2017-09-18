@@ -18,7 +18,7 @@ public class DataListView implements Serializable {
          
     private GifEntity gifSelecionado;
      
-    @ManagedProperty("#{carService}")
+    @ManagedProperty("#{gifController}")
     private GifController service;
      
     @PostConstruct

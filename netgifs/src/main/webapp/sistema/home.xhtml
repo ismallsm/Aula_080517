@@ -11,20 +11,12 @@
  
 	<ui:define name="content">
  
-	   <h:panelGroup>
-			<img src="https://media.giphy.com/media/xT9IgLnFupIc6joWuA/giphy.gif" />
-		</h:panelGroup> 
-		
-		
- 
-	</ui:define>
- 
- 	<h:form id="form">
+		<h:form id="form">
     <p:repeat value="#{dataListView.gifs}" var="gif">
-        <h:panelGrid columns="2" style="width:100%">
-            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
+        <h:panelGrid columns="2" style="width:35%">
+            <p:commandLink update=":form:gifDetail" oncomplete="PF('carDialog').show()">
                 <f:setPropertyActionListener value="#{gif}" target="#{dataListView.gifSelecionado}" />
-                <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
+					<img width="200" height="200" src="#{gif.link}" />
             </p:commandLink>
  
             <p:outputPanel>
@@ -53,12 +45,17 @@
         <p:outputPanel id="gifDetail" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty dataListView.gifSelecionado}" columnClasses="label,value">
                 <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{dataListView.gifSelecionado.brand}-big.gif"/> 
+                   <img width="1000" height="1000" src="#{gif.link}" />
                 </f:facet>
  
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>
 </h:form>
+		
+ 
+	</ui:define>
+ 
+ 	
 </ui:composition>
 </html>
