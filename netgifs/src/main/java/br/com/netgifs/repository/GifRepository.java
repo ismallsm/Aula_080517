@@ -1,18 +1,39 @@
 package br.com.netgifs.repository;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import br.com.netgifs.model.GifModel;
+import br.com.netgifs.repository.entity.CategoriaEntity;
 import br.com.netgifs.repository.entity.GifEntity;
 import br.com.netgifs.utils.Util;
 
-public class GifRepository implements Serializable {
+public class GifRepository {
+	
+	@Inject
+	GifEntity gifEntity;
+	
+	EntityManager entityManager;
+	
+	
+	public void salvarGif(GifModel gifModel){
+		entityManager = Util.JpaEntityManager();
+		
+		gifEntity = new GifEntity();
+		gifEntity.setNome(gifModel.getNomeGif());
+		gifEntity.setDescricao(gifModel.getDescricao());
+		gifEntity.setIdioma(gifModel.getIdioma());
+		gifEntity.setClassificacao(gifModel.getClassificacao());
+		
+		CategoriaEntity categoriaEntity = entityManager.find(CategoriaEntity.class, gifModel.getGenero());
+		gifEntity.setGenero(categoriaEntity.getNome());
+		
+		entityManager.persist(gifEntity);
+	}
 	 
-	 
-	private static final long serialVersionUID = 1L;
- 
 	public List<GifEntity> buscarGifs(){
  
 		try {
