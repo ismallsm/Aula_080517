@@ -1,19 +1,22 @@
 package br.com.netgifs.repository;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import br.com.netgifs.model.CategoriaModel;
 import br.com.netgifs.repository.entity.CategoriaEntity;
-import br.com.netgifs.repository.entity.GifEntity;
 import br.com.netgifs.utils.Util;
 
-public class CategoriaRepository implements Serializable {
-	 
-	 
-	private static final long serialVersionUID = 1L;
- 
+public class CategoriaRepository {
+	
+	@Inject
+	CategoriaEntity categoriaEntity;
+	
+	EntityManager entityManager;
+		 
 	public List<CategoriaEntity> buscarCategorias(){
  
 		try {
@@ -28,8 +31,16 @@ public class CategoriaRepository implements Serializable {
 			return null;
 		}
  
- 
- 
+	}
+	
+	public void salvarCategoria(CategoriaModel categoriaModel) {
+		
+		entityManager =  Util.JpaEntityManager();
+		
+		categoriaEntity = new CategoriaEntity();
+		categoriaEntity.setNome(categoriaModel.getNomeCategoria());
+		
+		entityManager.persist(categoriaEntity);
 	}
 
 }
