@@ -52,7 +52,7 @@
             				<f:selectItem itemLabel="Livre" itemValue="L" />
             				<f:selectItem itemLabel="Adulto" itemValue="A" />            				
         				</p:selectOneRadio> 
-        				
+        				<p:outputLabel value="Link" for="inputText-url"/>
         				<p:inputText id="inputText-url" 
 	            				  style="width:300px" maxlength="70" 
 	            				  value="#{gifControlle.gifModel.url}"
@@ -70,7 +70,7 @@
  
 	            		<p:spacer/>
 	            		
-	            		<p:outputLabel value="Nome" for="inputText-url"/>
+	            		
 	            		
  
 	            		<p:commandButton value="Salvar" 
