@@ -15,10 +15,10 @@
  
 	<ui:define name="content">
  
-		   <p:tabView style="width:600px;height:370px;margin:auto;">
+		   <p:tabView style="width:800px;height:570px;margin:auto;">
 	 		 	<p:tab title="Cadastro de GIF">
  
-	 		 	<h:form id="form-cadastro">	 	
+	 		 	<h:form id="form-cadastroGif">	 	
  
 	 		 	<h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
  
@@ -29,22 +29,19 @@
 	            				  required="true"
 	            				  requiredMessage="O nome é de preenchimento obrigatório"/>
 	            		<p:outputLabel value="Descrição" for="inputText-descricao"/>
-	            		<p:inputText id="inputText-email" 
-	            			     style="width:300px" 
+	            		<p:inputText id="inputText-descricao" 
+	            			     style="width:300px;" 
 	            			     maxlength="200" 
 	            			     value="#{gifControlle.gifModel.descricao}"
 	            			     required="true"
 	            			     requiredMessage="O email é de preenchimento obrigatório"/>
  
-	            		<p:outputLabel for="selectOneRadio-sexo" value="Genero:" />
-        				<p:selectOneRadio id="selectOneRadio-sexo" 
-        						  value="#{gifControlle.gifModel.genero}"
-        						  required="true"
-	            				     	  requiredMessage="O Genero é de preenchimento obrigatório">
- 
-            				<f:selectItem itemLabel="Masculino" itemValue="M" />
-            				<f:selectItem itemLabel="Feminino" itemValue="F" />            				
-        				</p:selectOneRadio>
+	            		<p:outputLabel for="selectOneRadio-genero" value="Genero:" />
+        				<p:selectOneMenu id="selectOneRadio-genero" value="#{gifControlle.gifModel.genero}" style="width:400px" >
+				            <f:selectItem itemLabel="Selecione" itemValue="" />
+				             <f:selectItems value="#{dataListView.categorias}" var="categoria" itemLabel="#{categoria.nome}" itemValue="#{categoria.id}"/>
+				             				             
+				        </p:selectOneMenu>
  
 	            		<p:outputLabel for="selectOneRadio-classificacao" value="Classificação:" />
         				<p:selectOneRadio id="selectOneRadio-classificacao" 
@@ -54,7 +51,13 @@
  
             				<f:selectItem itemLabel="Livre" itemValue="L" />
             				<f:selectItem itemLabel="Adulto" itemValue="A" />            				
-        				</p:selectOneRadio>           		
+        				</p:selectOneRadio> 
+        				
+        				<p:inputText id="inputText-url" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{gifControlle.gifModel.url}"
+	            				  required="true"
+	            				  requiredMessage="A URL é de preenchimento obrigatório"/>          		
  
  
 	            		<p:outputLabel value="Idioma" for="inputText-idioma"/>
@@ -66,6 +69,9 @@
 	            		             requiredMessage="O Idioma é de preenchimento obrigatório"/>
  
 	            		<p:spacer/>
+	            		
+	            		<p:outputLabel value="Nome" for="inputText-url"/>
+	            		
  
 	            		<p:commandButton value="Salvar" 
 	            				 id="commandButton-salvar"

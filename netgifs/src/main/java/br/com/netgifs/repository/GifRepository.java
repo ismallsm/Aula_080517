@@ -27,6 +27,7 @@ public class GifRepository {
 		gifEntity.setDescricao(gifModel.getDescricao());
 		gifEntity.setIdioma(gifModel.getIdioma());
 		gifEntity.setClassificacao(gifModel.getClassificacao());
+		gifEntity.setLink(gifModel.getUrl());
 		
 		CategoriaEntity categoriaEntity = entityManager.find(CategoriaEntity.class, gifModel.getGenero());
 		gifEntity.setGenero(categoriaEntity.getNome());
