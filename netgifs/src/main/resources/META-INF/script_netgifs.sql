@@ -31,6 +31,10 @@ CREATE TABLE db_netgifs.tb_pessoa(
     nm_categoria   VARCHAR(70)  NOT NULL
 );
 
+
+insert into db_netgifs.tb_categoria values (1,'Gifs Animados');
+insert into db_netgifs.tb_categoria values (2,'Suspense');
+
  CREATE TABLE db_netgifs.tb_gif(
 	id_gif INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nm_gif           VARCHAR(70)  NOT NULL,
@@ -41,6 +45,11 @@ CREATE TABLE db_netgifs.tb_pessoa(
 	link_gif varchar(500) NOT NULL,
   	id_categoria int NOT NULL
 );
+
+insert into db_netgifs.tb_gif values (1,'gif de teste', 'descricao do gif teste', 'https://media.giphy.com/media/PBg4KWciMK6zu/giphy.gif',1) ;
+insert into db_netgifs.tb_gif values (2,'gif footbal', 'gif muito da zuera kkkkkkk', 'Comedia','Livre', 'Ingles', 'https://media1.giphy.com/media/xUPGcB5L0TIfLrDH8c/giphy.gif',1) ;
+insert into db_netgifs.tb_gif values (3,'gif drink beer', 'tiozinho tomando uma', 'Comedia','Livre', 'Ingles', 'https://media4.giphy.com/media/zbMUQKqHZQ4eY/giphy_s.gif',2) ;
+
 
 ALTER TABLE db_netgifs.tb_gif ADD FOREIGN KEY (id_categoria) REFERENCES db_netgifs.tb_categoria(id_categoria);
 

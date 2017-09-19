@@ -23,7 +23,6 @@ public class GifRepository {
 	@Inject
 	GifEntity gifEntity;
 	
-	EntityManager entityManager;
 	
 	
 	public void salvarGif(GifModel gifModel){
